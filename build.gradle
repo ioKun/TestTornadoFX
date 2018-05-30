@@ -1,0 +1,63 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+
+    repositories {
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:0.5.0"
+
+    }
+}
+
+group 'ilobanov'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+repositories {
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "no.tornado:tornadofx:1.7.16"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.5.0"
+}
+
+mainClassName = 'com.ilobanov.desktop.App'
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.lnkmonitoring.desktop.App'
+        )
+    }
+    from(configurations.compile.collect { entry -> zipTree(entry) }) {
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
