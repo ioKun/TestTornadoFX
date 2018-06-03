@@ -13,8 +13,8 @@ class ObjCardFragment: ListCellFragment<Sender>() {
         spacing = 16.0
         text(obj.name)
         text(obj.objLvlTwo.name)
-        obj.objLvlTwo.objLvlThreeList.onChange {
-            for (elem in obj.objLvlTwo.objLvlThreeList) {
+        obj.objLvlTwo.measurmentsList.onChange {
+            for (elem in obj.objLvlTwo.measurmentsList) {
                 text { elem.name }
             }
         }

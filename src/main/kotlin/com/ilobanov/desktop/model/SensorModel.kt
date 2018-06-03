@@ -11,7 +11,7 @@ class SensorModel : ItemViewModel<Sensor>() {
 
     val id = bind(Sensor::id)
     val name = bind(Sensor::name)
-    val objLvlThreeList = FXCollections.observableArrayList<MeasurmentModel>()!!
+    val measurmentsList = FXCollections.observableArrayList<MeasurmentModel>()
 
     init {
         prepare()
@@ -29,16 +29,16 @@ class SensorModel : ItemViewModel<Sensor>() {
             sensorModel
 //                it.value
         }
-        objLvlThreeList.setAll(list)
+        measurmentsList.setAll(list)
         isPrepared = list.isNotEmpty()
     }
 
     override fun onCommit() {
-        objLvlThreeList.forEach { it.commit() }
+        measurmentsList.forEach { it.commit() }
         item = Sensor(
             id.value,
             name.value,
-            objLvlThreeList.map { it.id.value to it.item }.toMap().toMutableMap()
+            measurmentsList.map { it.id.value to it.item }.toMap().toMutableMap()
         )
     }
 }

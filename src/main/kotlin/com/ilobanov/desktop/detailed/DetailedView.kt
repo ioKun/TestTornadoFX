@@ -14,7 +14,7 @@ class DetailedView: View(null, null) {
                 field("Lvl Two Name") { textfield(obj.objLvlTwo.name)  }
             }
 
-            for (elem in obj.objLvlTwo.objLvlThreeList) {
+            for (elem in obj.objLvlTwo.measurmentsList) {
                 fieldset("Data List") {
                     field("Lvl Three Name") { textfield(elem.name) }
                 }
