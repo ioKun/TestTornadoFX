@@ -1,14 +1,13 @@
 package com.ilobanov.desktop.main
 
-import com.ilobanov.desktop.data.ObjLvlOne
+import com.ilobanov.desktop.data.Sender
 import com.ilobanov.desktop.detailed.DetailedView
-import com.ilobanov.desktop.model.ObjLvlOneModel
+import com.ilobanov.desktop.model.SenderModel
 import tornadofx.*
-import java.awt.Insets
 
-class ObjCardFragment: ListCellFragment<ObjLvlOne>() {
+class ObjCardFragment: ListCellFragment<Sender>() {
 
-    private val obj = ObjLvlOneModel().bindTo(this)
+    private val obj = SenderModel().bindTo(this)
 
     override val root = hbox {
         spacing = 16.0

@@ -3,8 +3,8 @@ package com.ilobanov.desktop.data
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ObjLvlTwo(
+data class Sensor(
     val id: Int,
     val name: String,
-    val objLvlThreeMap: MutableMap<Int, ObjLvlThree>?
+    val measurmentMap: MutableMap<Int, Measurment>?
 )

@@ -1,18 +1,11 @@
 package com.ilobanov.desktop.detailed
 
-import com.ilobanov.desktop.data.ObjLvlOne
-import com.ilobanov.desktop.data.ObjLvlThree
-import com.ilobanov.desktop.data.ObjLvlTwo
-import com.ilobanov.desktop.main.ObjCardFragment
-import com.ilobanov.desktop.model.ObjLvlOneModel
-import javafx.collections.FXCollections
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.delay
+import com.ilobanov.desktop.model.SenderModel
 import tornadofx.*
 
 class DetailedView: View(null, null) {
 
-    private val obj: ObjLvlOneModel by inject()
+    private val obj: SenderModel by inject()
 
     override val root = vbox {
         form {
